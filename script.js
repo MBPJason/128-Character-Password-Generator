@@ -6,13 +6,16 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
+
+  // Takes the result of finalPassword and stores it
   function generatePassword() {
-    var passwordLength = numCharacters();
+    var passwordLength = numCharacters(); // Placeholder to get length of characters 
     var lowerABC = "abcdefghijklmnopqrstuvwxyz";
     var upperABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var numbers = "0123456789";
     var specials = "!@#$%^&*+~}{;/";
 
+    // Checks user first input and corrects them to make the right choice
     function numCharacters() {
       while (true) {
         let input = prompt(
@@ -26,7 +29,9 @@ function writePassword() {
         } else if (input < 8 || input > 128 || isNaN(input)) {
           alert("Invalid input.");
         } else {
+          console.log(input);
           return parseInt(input);
+          
         }
       }
     }
@@ -34,16 +39,16 @@ function writePassword() {
     console.log(passwordLength);
 
     var charLower = confirm(
-      "Would you like characters to be included lowercase? Y for yes, N for no"
+      "Would you like characters to be included lowercase? Hit 'OK' for yes, 'Cancel' for no"
     );
     var charUpper = confirm(
-      "Would you like characters to be included uppercase? Y for yes, N for no"
+      "Would you like characters to be included uppercase? Hit 'OK' for yes, 'Cancel' for no"
     );
     var charNumeric = confirm(
-      "Would you like numbers to be included? Y for yes, N for no"
+      "Would you like numbers to be included? Hit 'OK' for yes, 'Cancel' for no"
     );
     var charSpecial = confirm(
-      "Would you like special characters to be included? Y for yes, N for no"
+      "Would you like special characters to be included? Hit 'OK' for yes, 'Cancel' for no"
     );
     if (
       charLower === false &&
@@ -55,7 +60,8 @@ function writePassword() {
       return;
     }
 
-    var tempPassString = "";
+    // Sets tempPassString to gain one of the corresponding strings based on user choice
+    var tempPassString = ""; //Empty string template to push strings
     if (charLower === true) {
       tempPassString = tempPassString.concat(lowerABC);
     }
@@ -70,13 +76,16 @@ function writePassword() {
     }
     console.log(tempPassString);
 
-    var finalPassword = "";
+    // Sets finalPassword based on user length choice and character choice
+    var finalPassword = "";   //Empty String for template
     for (i = 0; i < passwordLength; i++) {
+      // Sets finalPassword to equal/gain what the randomizer drops
       finalPassword += tempPassString.charAt(
+        // Randomizer 
         Math.floor(Math.random() * tempPassString.length)
       );
     }
-    console.log(finalPassword);
+    return finalPassword;
   }
 
   passwordText.value = password;
