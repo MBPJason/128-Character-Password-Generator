@@ -9,18 +9,13 @@ function writePassword() {
   
 
   function generatePassword() {
-    var length = numCharacters();
-    var string = "abcdefghijklmnopqrstuvwxyz"; 
+    var passwordLength = numCharacters();
+    var lowerABC = "abcdefghijklmnopqrstuvwxyz"; 
+    var upperABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var numbers = '0123456789';
     var specials = '!@#$%^&*+~}{;/';
-    var tempPassString = '';
-    var finalPassword = '';
-    var passwordReq = {
-      lowercase: false,
-      uppercase: false,
-      numeric: false,
-      special: false,
-    };
+    
+    
     
     function numCharacters() {
       while (true) {
@@ -41,9 +36,8 @@ function writePassword() {
       }
     }
 
-    console.log(length);
+    console.log(passwordLength);
 
-    // var numCharacters = prompt("Choose between 8 to 128 characters for your password.");
     var charLower = confirm("Would you like characters to be included lowercase? Y for yes, N for no");
     var charUpper = confirm("Would you like characters to be included uppercase? Y for yes, N for no");
     var charNumeric = confirm("Would you like numbers to be included? Y for yes, N for no");
@@ -54,18 +48,30 @@ function writePassword() {
       charNumeric === false &&
       charSpecial === false
     ) {
-      alert("You must select at least");
+      alert("You must select at least one");
       return;
     }
-    
+
+    var tempPassString = '';
+      if (charLower === true) {
+        tempPassString = tempPassString.concat(lowerABC);
+      }
+      if (charUpper === true) {
+        tempPassString = tempPassString.concat(upperABC);
+      }
+      if (charNumeric === true) {
+        tempPassString = tempPassString.concat(numbers);
+      }
+      if (charSpecial === true) {
+        tempPassString = tempPassString.concat(specials);
+      }
+      console.log(tempPassString);
+      
 
 
 
-    // console.log(numCharacters);
-    console.log(charLower);
-    // console.log(charUpper);
-    // console.log(charNumeric);
-    // console.log(charSpecial);
+
+
   }
 
   passwordText.value = password;
