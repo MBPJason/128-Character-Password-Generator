@@ -6,10 +6,9 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-
   // Takes the result of finalPassword and stores it
   function generatePassword() {
-    var passwordLength = numCharacters(); // Placeholder to get length of characters 
+    var passwordLength = numCharacters(); // Placeholder to get length of characters
     var lowerABC = "abcdefghijklmnopqrstuvwxyz";
     var upperABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var numbers = "0123456789";
@@ -25,19 +24,22 @@ function writePassword() {
         if (input == null) {
           //user hit cancel
           alert("That sucks.");
-          return true;
+          input;
           // user gives info but not with in parameters
-        } else if (parseFloat(input) < 8 || parseFloat(input) > 128 || isNaN(input)) {
+        } else if (
+          parseFloat(input) < 8 ||
+          parseFloat(input) > 128 ||
+          isNaN(input)
+        ) {
           alert("Invalid input.");
         } else {
           // returns number
           return parseInt(input);
-          
         }
       }
     }
 
-      // Prompts user for choice of characters to use in password generator
+    // Prompts user for choice of characters to use in password generator
     var charLower = confirm(
       "Would you like characters to be included lowercase? Hit 'OK' for yes, 'Cancel' for no"
     );
@@ -76,12 +78,13 @@ function writePassword() {
       tempPassString = tempPassString.concat(specials);
     }
 
+    // TO DO: THIS IS THE ONLY RUNNING FUNCTION THAT CALLS THE OTHER FUNCTIONS IN TO OPERATION
     // Sets finalPassword based on user length choice and character choice
-    var finalPassword = "";   //Empty String for template
+    var finalPassword = ""; //Empty String for template
     for (i = 0; i < passwordLength; i++) {
       // Sets finalPassword to equal/gain what the randomizer drops
       finalPassword += tempPassString.charAt(
-        // Randomizer 
+        // Randomizer
         Math.floor(Math.random() * tempPassString.length)
       );
     }
