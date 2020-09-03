@@ -21,8 +21,7 @@ function writePassword() {
       numeric: false,
       special: false,
     };
-
-
+    
     function numCharacters() {
       while (true) {
         let input = prompt(
@@ -37,7 +36,7 @@ function writePassword() {
         } else if (input < 8 || input > 128 || isNaN(input)) {
           alert("Invalid input.");
         } else {
-          return parseInt(input);
+            return parseInt(input);
         }
       }
     }
@@ -45,13 +44,25 @@ function writePassword() {
     console.log(length);
 
     // var numCharacters = prompt("Choose between 8 to 128 characters for your password.");
-    // var charLower = prompt("Would you like characters to be included lowercase? Y for yes, N for no");
-    // var charUpper = prompt("Would you like characters to be included uppercase? Y for yes, N for no");
-    // var charNumeric = prompt("Would you like numbers to be included? Y for yes, N for no");
-    // var charSpecial = prompt("Would you like special characters to be included? Y for yes, N for no");
+    var charLower = confirm("Would you like characters to be included lowercase? Y for yes, N for no");
+    var charUpper = confirm("Would you like characters to be included uppercase? Y for yes, N for no");
+    var charNumeric = confirm("Would you like numbers to be included? Y for yes, N for no");
+    var charSpecial = confirm("Would you like special characters to be included? Y for yes, N for no");
+    if (
+      charLower === false &&
+      charUpper === false &&
+      charNumeric === false &&
+      charSpecial === false
+    ) {
+      alert("You must select at least");
+      return;
+    }
+    
+
+
 
     // console.log(numCharacters);
-    // console.log(charLower);
+    console.log(charLower);
     // console.log(charUpper);
     // console.log(charNumeric);
     // console.log(charSpecial);
