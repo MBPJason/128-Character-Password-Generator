@@ -26,18 +26,18 @@ function writePassword() {
           //user hit cancel
           alert("That sucks.");
           return true;
-        } else if (input < 8 || input > 128 || isNaN(input)) {
+          // user gives info but not with in parameters
+        } else if (parseFloat(input) < 8 || parseFloat(input) > 128 || isNaN(input)) {
           alert("Invalid input.");
         } else {
-          console.log(input);
+          // returns number
           return parseInt(input);
           
         }
       }
     }
 
-    console.log(passwordLength);
-
+      // Prompts user for choice of characters to use in password generator
     var charLower = confirm(
       "Would you like characters to be included lowercase? Hit 'OK' for yes, 'Cancel' for no"
     );
@@ -50,6 +50,7 @@ function writePassword() {
     var charSpecial = confirm(
       "Would you like special characters to be included? Hit 'OK' for yes, 'Cancel' for no"
     );
+    // If user doesn't select a choice it exits out
     if (
       charLower === false &&
       charUpper === false &&
@@ -74,7 +75,6 @@ function writePassword() {
     if (charSpecial === true) {
       tempPassString = tempPassString.concat(specials);
     }
-    console.log(tempPassString);
 
     // Sets finalPassword based on user length choice and character choice
     var finalPassword = "";   //Empty String for template
