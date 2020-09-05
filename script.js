@@ -78,16 +78,18 @@ function writePassword() {
       tempPassString = tempPassString.concat(specials);
     }
 
-    // TO DO: THIS IS THE ONLY RUNNING FUNCTION THAT CALLS THE OTHER FUNCTIONS IN TO OPERATION
+   
     // Sets finalPassword based on user length choice and character choice
     var finalPassword = ""; //Empty String for template
-    for (i = 0; i < passwordLength; i++) {
-      // Sets finalPassword to equal/gain what the randomizer drops
-      finalPassword += tempPassString.charAt(
-        // Randomizer
-        Math.floor(Math.random() * tempPassString.length)
-      );
-    }
+    
+    // TO DO: THIS IS THE ONLY RUNNING FUNCTION THAT CALLS THE OTHER FUNCTIONS IN TO OPERATION
+    // for (i = 0; i < passwordLength; i++) {
+    //   // Sets finalPassword to equal/gain what the randomizer drops
+    //   finalPassword += tempPassString.charAt(
+    //     // Randomizer
+    //     Math.floor(Math.random() * tempPassString.length)
+    //   );
+    // }
     return finalPassword;
   }
 
